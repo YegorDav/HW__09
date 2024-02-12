@@ -5,8 +5,11 @@ class ContactBook:
         self.contacts = {}
 
     def add_contact(self, name, phone):
-        self.contacts[name] = phone
-        return f"Added {name} with phone number {phone}"
+        if name not in self.contacts:
+            self.contacts[name] = phone
+            return f"Added {name} with phone number {phone}"
+        else:
+            return f"Contact {name} already exists. Use 'change' command to update the phone number."
 
     def change_phone(self, name, new_phone):
         if name in self.contacts:
